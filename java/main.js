@@ -61,11 +61,11 @@ function informarPlazoFjo(nombre, monto, plazo, tasa) {
     let textoPlazo;
 
     if (plazo == 1) {
-        textoPlazo = 12;
+        textoPlazo = 30;
     } else if (plazo == 2) {
-        textoPlazo = 24;
+        textoPlazo = 60;
     } else {
-        textoPlazo = 36;
+        textoPlazo = 90;
     }
 
    alert("Cliente: " + nombre + "\nMonto: $" + monto + "\nPlazo: " + textoPlazo + tasa);
