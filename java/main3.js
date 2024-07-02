@@ -1,6 +1,9 @@
 // ENTRADA DE DATOS
 
 let nombreCliente = prompt("Ingrese su Nombre y Apellido: (ESC para salir)");
+let identificadorDni = prompt ("Ingrese su DNI: ");
+
+
 
 //Metodo Objeto
 
@@ -40,6 +43,15 @@ let textoPlazo ="Ingrese tipo de Plazo:\n\n";
     textoPlazo +="4-Mas dias";
 let plazo = parseInt (prompt (textoPlazo)); 
 
+const fechaActual = new Date ();
+
+const dia = fechaActual.getDate();
+const mes = fechaActual.getMonth() + 1;
+const anio = fechaActual.getFullYear();
+
+const fechaContatenada = (dia + "/" + mes + "/" + anio);
+
+
 // let textoTasa = "Ingrese tipo de Tasa\n\n";
 //     textoTasa += "1= 30%\n";
 //     textoTasa += "2= 40%\n";
@@ -53,18 +65,27 @@ let plazo = parseInt (prompt (textoPlazo));
     console.log ("Tipo Cliene: " + cliente);
     // console.log ("Tipo Plazo Fijo:  "+ tipoPlazoFijo);
     console.log("Monto: $" + monto);
-    console.log("Plazo: " + plazo);
+    console.log ("Plazo: " + plazo);
+    console.log (fechaActual);
+    console.log (dia);
+    console.log (mes);
+    console.log (anio);
+    console.log (fechaContatenada);
 
-// PROCESAMIENTO DE DATOS
+    // PROCESAMIENTO DE DATOS
     let plazoFijoPuro = calcularPlazoFijoPuro (monto, plazo);
     let plazoFijoTNA = calcularTNA (plazo, plazoFijoPuro);
     let plazoFijoCobrar = plazoFijoTNA;
+    // let fechaVto = calcularFechaVto (fechaActual, plazo);
+    // let fechaVtoplazofijo = fechaVto;
 
-// SALIDA DE DATOS
-informarPlazoFijo(nombreCliente, cliente, monto, plazo, plazoFijoCobrar);
+
+    // SALIDA DE DATOS
+informarPlazoFijo(nombreCliente, cliente, monto, plazo, plazoFijoCobrar, fechaContatenada);
 nombreCliente = prompt("Ingrese otro Nombre y Apellido: (ESC para salir)");
-
 }
+
+
 
 function calcularPlazoFijoPuro (monto, plazo){
     return (monto * plazo); 
@@ -87,7 +108,7 @@ function calcularTNA (plazo, plazoFijoPuro){
 
 }
 
-function informarPlazoFijo (nombreCliente, cliente, monto, plazo, plazoFijoCobrar) {
+function informarPlazoFijo (nombreCliente, cliente, monto, plazo, plazoFijoCobrar, fechaContatenada) {
     let textoPlazo;
 
     if (plazo == 1) {
@@ -100,26 +121,6 @@ function informarPlazoFijo (nombreCliente, cliente, monto, plazo, plazoFijoCobra
         textoPlazo = 120;
     }
 
-    alert("Cliente: " + nombreCliente + "\nTipo de Cliente: " + cliente + "\nMonto: $" + monto + "\nPlazo: " + textoPlazo + "\nIntereses a Pagar: " + plazoFijoCobrar.toFixed(2));
+    alert("Cliente: " + nombreCliente + "\nTipo de Cliente: " + cliente + "\nMonto: $" + monto + "\nPlazo: " + textoPlazo + "\nIntereses ganados: " + plazoFijoCobrar.toFixed(2) + "\nFecha Constitucion: " + fechaContatenada);
 }
 
-class Persona {
-
-constructor (nombreCliente, cliente, plazoFijoCobrar){
-
-    this.nombre = nombreCliente;
-    this.cliente = cliente;
-    this.plazoFijoCobrar = plazoFijoCobrar;
-
-    saludar = () => {
-    
-    console.log ("Hola, estos son tus datos" + nombre + cliente + plazoFijoCobrar);
-
-    }
-
-    const persona1 = new Persona (nombreCliente, cliente, plazoFijoCobrar);
-    console.log (persona1);
-
-}
-
-}
