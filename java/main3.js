@@ -3,8 +3,6 @@
 let nombreCliente = prompt("Ingrese su Nombre y Apellido: (ESC para salir)");
 let identificadorDni = prompt ("Ingrese su DNI: ");
 
-
-
 //Metodo Objeto
 
 nombreCliente = formatearnombreCliente (nombreCliente);
@@ -76,15 +74,57 @@ const fechaContatenada = (dia + "/" + mes + "/" + anio);
     let plazoFijoPuro = calcularPlazoFijoPuro (monto, plazo);
     let plazoFijoTNA = calcularTNA (plazo, plazoFijoPuro);
     let plazoFijoCobrar = plazoFijoTNA;
+    let plazoFijodias= calcularFechaVto (plazo);
+    let fechaVto = plazoFijodias;
+
+    const diaVto = fechaVto.getDate();
+    const mesVto = fechaVto.getMonth() + 1;
+    const anioVto = fechaVto.getFullYear();
+    const fechaVtoContatenada = (diaVto + "/" + mesVto + "/" + anioVto);
+
+    console.log (fechaVtoContatenada);
+
+
+
     // let fechaVto = calcularFechaVto (fechaActual, plazo);
     // let fechaVtoplazofijo = fechaVto;
 
 
     // SALIDA DE DATOS
-informarPlazoFijo(nombreCliente, cliente, monto, plazo, plazoFijoCobrar, fechaContatenada);
+informarPlazoFijo(nombreCliente, cliente, monto, plazo, plazoFijoCobrar, fechaContatenada,fechaVtoContatenada);
 nombreCliente = prompt("Ingrese otro Nombre y Apellido: (ESC para salir)");
 }
 
+function calcularFechaVto(plazo) {
+    const fechaActual = new Date();
+    let diasASumar;
+
+    switch (plazo) {
+        case 1:
+            diasASumar = 30;
+            break;
+        case 2:
+            diasASumar = 60;
+            break;
+        case 3:
+            diasASumar = 90;
+            break;
+        
+        case 4:
+            diasASumar = 120;
+            break;
+        default:
+                return "Plazo no válido. Debes proporcionar 1, 2, 3 o 4.";
+    }
+
+    const fechaVto = sumarDias(fechaActual, diasASumar);
+    return fechaVto;
+}
+
+function sumarDias (fecha, plazo){
+    fecha.setDate (fecha.getDate () + plazo);
+    return fecha;
+}
 
 
 function calcularPlazoFijoPuro (monto, plazo){
@@ -108,7 +148,7 @@ function calcularTNA (plazo, plazoFijoPuro){
 
 }
 
-function informarPlazoFijo (nombreCliente, cliente, monto, plazo, plazoFijoCobrar, fechaContatenada) {
+function informarPlazoFijo (nombreCliente, cliente, monto, plazo, plazoFijoCobrar, fechaContatenada, fechaVtoContatenada) {
     let textoPlazo;
 
     if (plazo == 1) {
@@ -121,6 +161,6 @@ function informarPlazoFijo (nombreCliente, cliente, monto, plazo, plazoFijoCobra
         textoPlazo = 120;
     }
 
-    alert("Cliente: " + nombreCliente + "\nTipo de Cliente: " + cliente + "\nMonto: $" + monto + "\nPlazo: " + textoPlazo + "\nIntereses ganados: " + plazoFijoCobrar.toFixed(2) + "\nFecha Constitucion: " + fechaContatenada);
+    alert("Cliente: " + nombreCliente + "\nTipo de Cliente: " + cliente + "\nMonto: $" + monto + "\nPlazo: " + textoPlazo + "\nIntereses ganados: " + plazoFijoCobrar.toFixed(2) + "\nFecha Constitucion: " + fechaContatenada  + "\nFecha vto: "+ fechaVtoContatenada );
 }
 
