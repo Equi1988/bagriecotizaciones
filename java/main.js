@@ -5,6 +5,7 @@ alert ("¡Bienvenidos a BagRie Cotizaciones!");
 // ENTRADA DE DATOS
 
 let nombreCliente = prompt("Ingrese su Nombre y Apellido: (ESC para salir)");
+localStorage.setItem("Nombre y Apellido",nombreCliente);
 const nombres = [ "Ezequiel Riente", "Soledad Sanguineti", "Damian Cerezo", "Facundo Rodriguez"];
 
 
@@ -16,6 +17,7 @@ const nombres = [ "Ezequiel Riente", "Soledad Sanguineti", "Damian Cerezo", "Fac
     } 
 
     let identificadorDni = prompt ("Ingrese su DNI: ");
+    localStorage.setItem("DNI",identificadorDni);
 
     let clienteTipo;
     let textoTipoCliente;
@@ -195,6 +197,7 @@ function informarPlazoFijo (nombreCliente, cliente, clienteTipo, monto, plazo, p
     alert("Cliente: " + nombreCliente + "\nCliente (1 = Si / 2 = No): " + cliente + "\nTipo de Cliente: " + clienteTipo + "\nMonto: $" + monto + "\nPlazo: " + textoPlazo + "\nIntereses ganados: " + plazoFijoCobrar.toFixed(2) 
     + "\nFecha Constitucion: " + fechaContatenada  + "\nFecha vto: "+ fechaVtoContatenada );
 }
+
 
 
 
