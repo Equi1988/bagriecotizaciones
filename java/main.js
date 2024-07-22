@@ -1,203 +1,105 @@
-// Bienvenidos
+// Ingreso de Datos
+const guardarDatos = () => {
+    guardarInfo();
+    vaciarCampos();
+    console.log("Los Datos se han guardado correctamente!");
+}
 
-alert ("¡Bienvenidos a BagRie Cotizaciones!");
+const recuperarDatos = () => {
+    let usuario = recuperarInfo();
+    document.getElementById("nombre").value = usuario.namelUser;
+    document.getElementById("dni").value = usuario.dniUser;
+    document.getElementById ("monto").value = usuario.montoUser;
+    document.getElementById ("resultadoplazo").textContent = usuario.plazoUser;
+    console.log("Los datos se recuperaron correctamente!");
+}
 
-// ENTRADA DE DATOS
+const borrarDatos = () => {
+    vaciarCampos();
+    localStorage.removeItem("usuario");
+    // localStorage.removeItem("identificadorDni");
+    // localStorage.removeItem("monto");
+    console.log("Los datos se vaciaron correctamente!");
+}
 
-let nombreCliente = prompt("Ingrese su Nombre y Apellido: (ESC para salir)");
-localStorage.setItem("Nombre y Apellido",nombreCliente);
-const nombres = [ "Ezequiel Riente", "Soledad Sanguineti", "Damian Cerezo", "Facundo Rodriguez"];
+const vaciarCampos = () => {
+    document.getElementById("nombre").value = "";
+    document.getElementById("dni").value = "";
+    document.getElementById ("monto").value = "";
+    document.getElementById ("resultadoplazo").textContent ="";
+}
 
+const guardarInfo = () => {
+    let nombreYapellido = document.getElementById("nombre").value;
+    let identificadorDni = document.getElementById("dni").value;
+    let monto = document.getElementById ("monto").value;
+    let plazo = document.getElementById ("resultadoplazo").textContent;
+    const usuario = {namelUser:nombreYapellido, dniUser:identificadorDni, montoUser:monto, plazoUser: plazo};
+    localStorage.setItem("usuario", JSON.stringify(usuario));
+}
 
-    let posArray = nombres.indexOf(nombreCliente);
-    if (posArray >= 0) {
-        alert("El nombre se encuentra en la posición: " + posArray)
+const recuperarInfo = () => {
+    return JSON.parse(localStorage.usuario);
+}
+
+document.getElementById("btnGuardar").addEventListener("click", guardarDatos);
+document.getElementById("btnRecuperar").addEventListener("click", recuperarDatos);
+document.getElementById("btnBorrar").onclick = borrarDatos;
+
+// Seleccion Producto
+
+let producto = document.getElementById("producto");
+producto.onchange = () => {
+    document.getElementById("resultado").innerHTML = "Seleccionaste: <b>" + producto.value + "</b>";
+}
+
+function mostrarResultado(checkOption) {
+    
+    const resultadoDiv = document.getElementById("resultado").innerHTML ="Seleccionaste: <b>" + producto.value + "</b>";
+    if (checkOption === 1) {
+        resultadoDiv.innerHTML = "Eres un cliente:" + checkOption.value;
+        console.log(resultadoDiv);
+    } else if (checkOption === 2) {
+        resultadoDiv.innerHTML = "No eres cliente.";
+        console.log(resultadoDiv);
     } else {
-        alert("Error! No existe el nombre ingresado!");
-    } 
-
-    let identificadorDni = prompt ("Ingrese su DNI: ");
-    localStorage.setItem("DNI",identificadorDni);
-
-    let clienteTipo;
-    let textoTipoCliente;
-
-//Metodo Objeto
-
-nombreCliente = formatearnombreCliente (nombreCliente);
-
-function formatearnombreCliente (nombreCliente){
-    return nombreCliente.trim().toUpperCase();
-}
-
-while (nombreCliente != "ESC"){
-
-    if (nombreCliente.toUpperCase() == "ESC") {
-        break;
-    }
-
-let textoSosCliente ="¿Sos Cliente?\n\n";
-    textoSosCliente += "1-Si\n";
-    textoSosCliente += "2-No";
-let cliente = parseInt (prompt (textoSosCliente));
-
-function seleccionarPaqueteServicios() {
-    let textoTipoCliente = "Ingrese su Paquete de Servicios:\n\n";
-    textoTipoCliente += "1-Premium\n";
-    textoTipoCliente += "2-Premium World\n";
-    textoTipoCliente += "3-Advanced\n";
-    textoTipoCliente += "4-Standard";
-
-    if (cliente === 2) {
-        console.log("El usuario no es cliente.");
-    } else if (cliente === 1) {
-        clienteTipo = parseInt(prompt(textoTipoCliente));
-    } else {
-        return cliente;
-    }
-
-    switch (clienteTipo) {
-        case 1:
-            console.log("Cliente seleccionó Premium");
-            break;
-        case 2:
-            console.log("Cliente seleccionó Premium World");
-            break;
-        case 3:
-            console.log("Cliente seleccionó Advanced");
-            break;
-        case 4:
-            console.log("Cliente seleccionó Standard");
-            break;
-        default:
-            console.log("Opción no válida. Debes seleccionar 1, 2, 3 o 4.");
+        resultadoDiv.innerHTML = "Tipo de cliente desconocido.";
     }
 }
-seleccionarPaqueteServicios();
 
-// let textoTipoPlazoFijo ="Ingrese tipo de Plazo Fijo:\n\n";
-//     textoTipoPlazoFijo += "1-Plazo Fijo en pesos\n";
-//     // textoTipoPlazoFijo += "2-Plazo Fijo en dólares (sólo clientes)";
-// let tipoPlazoFijo = parseInt (prompt (textoTipoPlazoFijo));
+// Llama a la función con el tipo de cliente apropiado (1 o 2)
+mostrarResultado();
 
-let monto = parseInt(prompt("Ingrese el Monto:(Minimo $ 1000)")); 
+//Selection Plazo (Botones)
 
-let textoPlazo ="Ingrese tipo de Plazo:\n\n";
-    textoPlazo +="1-30 dias\n";  
-    textoPlazo +="2-60 dias\n";
-    textoPlazo +="3-90 dias\n";
-    textoPlazo +="4-Mas dias";
-let plazo = parseInt (prompt (textoPlazo)); 
+document.getElementById("btn30").addEventListener("click", function() {
+    mostrarPlazoSeleccionado(30);
+});
 
-const fechaActual = new Date ();
-const dia = fechaActual.getDate();
-const mes = fechaActual.getMonth() + 1;
-const anio = fechaActual.getFullYear();
-const fechaContatenada = (dia + "/" + mes + "/" + anio);
+document.getElementById("btn60").addEventListener("click", function() {
+    mostrarPlazoSeleccionado(60);
+});
 
-// Chequeando como llegan los datos ingresados
-    console.log("Cliente: " + nombreCliente);
-    console.log ("Tipo Cliene: " + cliente);
-    console.log("Monto: $" + monto);
-    console.log ("Plazo: " + plazo);
-    console.log (fechaActual);
-    console.log (dia);
-    console.log (mes);
-    console.log (anio);
-    console.log (fechaContatenada);
+document.getElementById("btn90").addEventListener("click", function() {
+    mostrarPlazoSeleccionado(90);
+});
 
-    // PROCESAMIENTO DE DATOS
-    let plazoFijoPuro = calcularPlazoFijoPuro (monto, plazo);
-    let plazoFijoTNA = calcularTNA (plazo, plazoFijoPuro);
-    let plazoFijoCobrar = plazoFijoTNA;
-    let plazoFijodias= calcularFechaVto (plazo);
-    let fechaVto = plazoFijodias;
+document.getElementById("btn120").addEventListener("click", function() {
+    mostrarPlazoSeleccionado(120);
+});
 
-    const diaVto = fechaVto.getDate();
-    const mesVto = fechaVto.getMonth() + 1;
-    const anioVto = fechaVto.getFullYear();
-    const fechaVtoContatenada = (diaVto + "/" + mesVto + "/" + anioVto);
-
-    console.log (fechaVtoContatenada);
-
-    // SALIDA DE DATOS
-informarPlazoFijo(nombreCliente, cliente, clienteTipo, monto, plazo, plazoFijoCobrar, fechaContatenada,fechaVtoContatenada);
-
-nombreCliente = prompt("Ingrese otro Nombre y Apellido: (ESC para salir)");
-identificadorDni = prompt ("Ingrese su DNI: ");
+// Función para mostrar el plazo seleccionado
+function mostrarPlazoSeleccionado(plazo) {
+    document.getElementById("resultadoplazo").textContent = "Plazo seleccionado: " + plazo + " días";
 }
 
-function calcularFechaVto(plazo) {
-    const fechaActual = new Date();
-    let diasASumar;
-    switch (plazo) {
-        case 1:
-            diasASumar = 30;
-            break;
-        case 2:
-            diasASumar = 60;
-            break;
-        case 3:
-            diasASumar = 90;
-            break;
-        case 4:
-            diasASumar = 120;
-            break;
-        default:
-        return "Plazo no válido. Debes proporcionar 1, 2, 3 o 4.";
-    }
-    const fechaVto = sumarDias(fechaActual, diasASumar);
-    return fechaVto;
-}
-function sumarDias (fecha, plazo){
-    fecha.setDate (fecha.getDate () + plazo);
-    return fecha;
-}
-function calcularPlazoFijoPuro (monto, plazo){
-    return (monto * plazo); 
-}
-function calcularTNA (plazo, plazoFijoPuro){
-    let TNA;
-    if (plazo == 1) {
-        TNA = 30/12;
-    } else if (plazo == 2) {
-        TNA = 40/12;
-    } else if (plazo == 3){
-        TNA = 50/12;
-    } else{
-        TNA = 60/12;
-    }
-    return (plazoFijoPuro * TNA)/100;
-}
-
-function informarPlazoFijo (nombreCliente, cliente, clienteTipo, monto, plazo, plazoFijoCobrar, fechaContatenada, fechaVtoContatenada) {
-    let textoPlazo;
-    let textoTipoCliente;
-
-    if (plazo == 1) {
-        textoPlazo = 30;
-    } else if (plazo == 2){
-        textoPlazo = 60;
-    } else if (plazo ==3){
-        textoPlazo = 90;
-    } else{
-        textoPlazo = 120;
-    }
-
-        if (clienteTipo == 1) {
-            textoTipoCliente = "Premium";
-        } else if (clienteTipo == 2) {
-            textoTipoCliente = "Premium World";
-        } else if (clienteTipo == 3) {
-            textoTipoCliente = "Advanced";
-        } else {
-            textoTipoCliente = "Advanced";
-        }
-
-    alert("Cliente: " + nombreCliente + "\nCliente (1 = Si / 2 = No): " + cliente + "\nTipo de Cliente: " + clienteTipo + "\nMonto: $" + monto + "\nPlazo: " + textoPlazo + "\nIntereses ganados: " + plazoFijoCobrar.toFixed(2) 
-    + "\nFecha Constitucion: " + fechaContatenada  + "\nFecha vto: "+ fechaVtoContatenada );
-}
-
-
-
+document.querySelectorAll(".btn-primary").forEach(button => {
+        button.addEventListener("click", function() {
+            const plazoSeleccionado = this.textContent;
+            localStorage.setItem("plazoSeleccionado", plazoSeleccionado
+            );
+            console.log("Plazo seleccionado: " + plazoSeleccionado);
+        });
+});
+    
 
