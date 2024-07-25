@@ -37,3 +37,11 @@ footer svg {
     text-decoration: none;
     color: #eef1f0;
 }
+
+.alert{
+
+    width: 30%;
+    height: 20%;
+    margin-left: 7rem;
+
+}

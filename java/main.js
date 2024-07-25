@@ -10,9 +10,11 @@ const recuperarDatos = () => {
     document.getElementById("nombre").value = usuario.namelUser;
     document.getElementById("dni").value = usuario.dniUser;
     document.getElementById ("monto").value = usuario.montoUser;
-    document.getElementById ("resultadoplazo").textContent = usuario.plazoUser;
+    document.getElementById ("plazo").value = usuario.plazoUser;
+    document.getElementById ("interes").value = usuario.interesUser;
     console.log("Los datos se recuperaron correctamente!");
 }
+
 
 const borrarDatos = () => {
     vaciarCampos();
@@ -23,18 +25,20 @@ const borrarDatos = () => {
 }
 
 const vaciarCampos = () => {
-    document.getElementById("nombre").value = "";
-    document.getElementById("dni").value = "";
-    document.getElementById ("monto").value = "";
-    document.getElementById ("resultadoplazo").textContent ="";
+    document.getElementById("nombre", "nombreUsuario").value = "";
+    document.getElementById("dni", "dniUsuario").value = "";
+    document.getElementById ("monto", "montoUsuario").value = "";
+    document.getElementById ("plazo").value ="";
+    document.getElementById ("interes").value =""
 }
 
 const guardarInfo = () => {
     let nombreYapellido = document.getElementById("nombre").value;
     let identificadorDni = document.getElementById("dni").value;
     let monto = document.getElementById ("monto").value;
-    let plazo = document.getElementById ("resultadoplazo").textContent;
-    const usuario = {namelUser:nombreYapellido, dniUser:identificadorDni, montoUser:monto, plazoUser: plazo};
+    let plazo = document.getElementById ("plazo").value;
+    let interes = document.getElementById ("interes").value;
+    const usuario = {namelUser:nombreYapellido, dniUser:identificadorDni, montoUser:monto, plazoUser: plazo, interesUser: interes};
     localStorage.setItem("usuario", JSON.stringify(usuario));
 }
 
@@ -72,34 +76,32 @@ mostrarResultado();
 
 //Selection Plazo (Botones)
 
-document.getElementById("btn30").addEventListener("click", function() {
-    mostrarPlazoSeleccionado(30);
-});
+// document.getElementById("btn30").addEventListener("click", function() {
+//     mostrarPlazoSeleccionado(30);
+// });
 
-document.getElementById("btn60").addEventListener("click", function() {
-    mostrarPlazoSeleccionado(60);
-});
+// document.getElementById("btn60").addEventListener("click", function() {
+//     mostrarPlazoSeleccionado(60);
+// });
 
-document.getElementById("btn90").addEventListener("click", function() {
-    mostrarPlazoSeleccionado(90);
-});
+// document.getElementById("btn90").addEventListener("click", function() {
+//     mostrarPlazoSeleccionado(90);
+// });
 
-document.getElementById("btn120").addEventListener("click", function() {
-    mostrarPlazoSeleccionado(120);
-});
+// document.getElementById("btn120").addEventListener("click", function() {
+//     mostrarPlazoSeleccionado(120);
+// });
 
-// Función para mostrar el plazo seleccionado
-function mostrarPlazoSeleccionado(plazo) {
-    document.getElementById("resultadoplazo").textContent = "Plazo seleccionado: " + plazo + " días";
-}
+// // Función para mostrar el plazo seleccionado
+// function mostrarPlazoSeleccionado(plazo) {
+//     document.getElementById("resultadoplazo").textContent = "Plazo seleccionado: " + plazo + " días";
+// }
 
-document.querySelectorAll(".btn-primary").forEach(button => {
-        button.addEventListener("click", function() {
-            const plazoSeleccionado = this.textContent;
-            localStorage.setItem("plazoSeleccionado", plazoSeleccionado
-            );
-            console.log("Plazo seleccionado: " + plazoSeleccionado);
-        });
-});
-    
-
+// document.querySelectorAll(".btn-primary").forEach(button => {
+//         button.addEventListener("click", function() {
+//             const plazoSeleccionado = this.textContent;
+//             localStorage.setItem("plazoSeleccionado", plazoSeleccionado
+//             );
+//             console.log("Plazo seleccionado: " + plazoSeleccionado);
+//         });
+// });

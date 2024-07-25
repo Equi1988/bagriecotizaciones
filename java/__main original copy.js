@@ -4,17 +4,18 @@ alert ("¡Bienvenidos a BagRie Cotizaciones!");
 
 // ENTRADA DE DATOS
 
-let nombreCliente = prompt("Ingrese su Nombre y Apellido: (ESC para salir)");
+
+let nombreCliente= prompt("Ingrese su Nombre y Apellido: (ESC para salir)");
 localStorage.setItem("Nombre y Apellido",nombreCliente);
-const nombres = [ "Ezequiel Riente", "Soledad Sanguineti", "Damian Cerezo", "Facundo Rodriguez"];
+// const nombres = [ "Ezequiel Riente", "Soledad Sanguineti", "Damian Cerezo", "Facundo Rodriguez"];
 
 
-    let posArray = nombres.indexOf(nombreCliente);
-    if (posArray >= 0) {
-        alert("El nombre se encuentra en la posición: " + posArray)
-    } else {
-        alert("Error! No existe el nombre ingresado!");
-    } 
+//     let posArray = nombres.indexOf(nombreCliente);
+//     if (posArray >= 0) {
+//         alert("El nombre se encuentra en la posición: " + posArray)
+//     } else {
+//         alert("Error! No existe el nombre ingresado!");
+//     } 
 
     let identificadorDni = prompt ("Ingrese su DNI: ");
     localStorage.setItem("DNI",identificadorDni);
@@ -124,7 +125,28 @@ const fechaContatenada = (dia + "/" + mes + "/" + anio);
 informarPlazoFijo(nombreCliente, cliente, clienteTipo, monto, plazo, plazoFijoCobrar, fechaContatenada,fechaVtoContatenada);
 
 nombreCliente = prompt("Ingrese otro Nombre y Apellido: (ESC para salir)");
+
+const nombres = [ "Ezequiel Riente", "Soledad Sanguineti", "Damian Cerezo", "Juan Manuel Palavecino"];
+
+let postArray = nombres.indexOf(nombreCliente);
+    if (postArray >= 0) {
+        alert("El nombre se encuentra en la posición: " + postArray)
+    } else {
+        alert("Error! No existe el nombre ingresado!");
+    } 
+
 identificadorDni = prompt ("Ingrese su DNI: ");
+
+const DNI = [ "33944482", "33346119", "12459789", "28144044"];
+
+
+    let posteriorArray = nombres.indexOf(nombreCliente);
+    if (posteriorArray >= 0) {
+        alert("El DNI se encuentra en la posición: " + posteriorArray)
+    } else {
+        alert("Error! No existe el DNI ingresado!");
+    } 
+
 }
 
 function calcularFechaVto(plazo) {
@@ -183,7 +205,6 @@ function informarPlazoFijo (nombreCliente, cliente, clienteTipo, monto, plazo, p
     } else{
         textoPlazo = 120;
     }
-
         if (clienteTipo == 1) {
             textoTipoCliente = "Premium";
         } else if (clienteTipo == 2) {
@@ -197,6 +218,7 @@ function informarPlazoFijo (nombreCliente, cliente, clienteTipo, monto, plazo, p
     alert("Cliente: " + nombreCliente + "\nCliente (1 = Si / 2 = No): " + cliente + "\nTipo de Cliente: " + clienteTipo + "\nMonto: $" + monto + "\nPlazo: " + textoPlazo + "\nIntereses ganados: " + plazoFijoCobrar.toFixed(2) 
     + "\nFecha Constitucion: " + fechaContatenada  + "\nFecha vto: "+ fechaVtoContatenada );
 }
+
 
 
 
