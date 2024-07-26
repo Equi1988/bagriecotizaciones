@@ -1,57 +1,40 @@
-// const btnCotizar = document.getElementById('btnCotizar');
-//         const llenarTabla = document.querySelector('#lista-tabla tbody');
+// Declaración de variables
+let monto, plazo;
 
-//         btnCotizar.addEventListener('click', (event) => {
-//             event.preventDefault();
-//             const monto = parseFloat(document.getElementById('monto').value);
-//             const interes = parseFloat(document.getElementById('interes').value);
-//             const plazo = parseInt(document.getElementById('plazo').value);
-//             calcularPlazoFijo(monto, interes, plazo);
-//         });
+// Relación entre plazos y tasas
+const tasasPorPlazo = {
+    30: 30,
+    60: 40,
+    90: 50,
+    120: 60,
+};
 
-//         function calcularPlazoFijo(monto, interes, plazo) {
-//             const resultado = (monto * plazo * interes / 100) / 365;
-//             document.getElementById('resultado').textContent = `Resultado: $${resultado.toFixed(2)}`;
-//         }
+// Función para calcular el plazo fijo
+function calcularPlazoFijo(monto, plazo) {
+    const tasa = tasasPorPlazo[plazo];
+    if (tasa === undefined) {
+        console.error("Tasa no definida para el plazo seleccionado.");
+        return;
+    }
 
-//             let fechaActual = new Date();
-//             let pagoInteres = 0, pagoCapital = 0, cuota = 0;
+    const resultado = (monto * plazo * tasa / 100) / 365;
+    const fechaActual = new Date().toLocaleDateString();
 
-//             cuota = monto * ((Math.pow(1 + interes / 100, plazo) * interes / 100) / 365);
+    // Actualización de los elementos en el HTML
+    document.getElementById("resultadoPlazoFijo").textContent = `Interés Ganado: $${resultado.toFixed(2)}`;
+    document.getElementById("detalleFecha").textContent = `Fecha: ${fechaActual}`;
+    document.getElementById("detalleMonto").textContent = `Monto: $${monto.toFixed(2)}`;
+    document.getElementById("detallePlazo").textContent = `Plazo: ${plazo} días`;
+    document.getElementById("detalleTasa").textContent = `Tasa: ${tasa}%`;
+}
 
-//             for (let i = 1; i <= plazo; i++) {
-//                 pagoInteres = parseFloat(monto * (interes / 100));
-//                 pagoCapital = cuota - pagoInteres;
-//                 monto = parseFloat(monto - pagoCapital);
-
-//                 const row = document.createElement('tr');
-//                 row.innerHTML = `
-//                     <td>${fechaActual.getDate()}-${fechaActual.getMonth() + 1}-${fechaActual.getFullYear()}</td>
-//                     <td>${pagoCapital.toFixed(2)}</td>
-//                     <td>${pagoInteres.toFixed(2)}</td>
-//                     <td>${monto.toFixed(2)}</td>
-//                 `;
-//                 llenarTabla.appendChild(row);
-
-//                 fechaActual.setDate(fechaActual.getDate() + 1); // Avanzar un día
-//             }
-
-
+// Asignación de eventos al botón "Cotizar"
 const btnCotizar = document.getElementById('btnCotizar');
 
-        btnCotizar.addEventListener('click', (event) => {
-            event.preventDefault();
-            const monto = parseFloat(document.getElementById('monto').value);
-            const interes = parseFloat(document.getElementById('interes').value);
-            const plazo = parseInt(document.getElementById('plazo').value);
-            
-            // Función para calcular el plazo fijo
-            function calcularPlazoFijo(monto, interes, plazo) {
-                const resultado = (monto * plazo * interes / 100) / 365;
-                document.getElementById("resultadoPlazoFijo").textContent =`Interes Ganado: $${resultado.toFixed(2)}`;
-            }
+btnCotizar.addEventListener('click', (event) => {
+    event.preventDefault();
+    monto = parseFloat(document.getElementById('monto').value);
+    plazo = parseInt(document.getElementById('plazo').value);
 
-            calcularPlazoFijo(monto, interes, plazo); // Llamada a la función
-        });
-
-        
+    calcularPlazoFijo(monto, plazo); // Llamada a la función
+});

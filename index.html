@@ -21,7 +21,7 @@
                 <div id="contenido" class="row">
                     <div class="col">
                         <h3>¿Sos Cliente?</h3>
-                        <div id="checkOption">
+                        <div id="form-group">
                             <div class="form-group">
                                 <input class="form-check-input" name="radioUno" type="radio" value="1" id="cliente" />
                                 <label class="form-check-label" for="flexCheckDefault">Cliente</label>
@@ -35,59 +35,33 @@
                             </select>
                             <div id="resultado" class="my-3"></div>
                             <div class="form-group">
-                                <label class="form-check-label" for="flexCheckChecked">No Cliente</label>
                                 <input class="form-check-input" name="radioUno" type="radio" value="2" id="nocliente" />
+                                <label class="form-check-label" for="flexCheckChecked">No Cliente</label>
                             </div>
-                            <div id="resultado" class="my-3"></div>
+                            <div id="resultadoNoCliente" class="my-3"></div>
                         </div>
-
-                        <div class="mb-2">
+                        <div class="form-group">
                             <label for="nombre" class="form-label">Nombre y Apellido</label>
                             <input type="text" class="form-control-md" id="nombre" />
                         </div>
-                        <div class="mb-2">
+                        <div class="form-group">
                             <label for="dni" class="form-label">Numero de Documento</label>
                             <input type="number" class="form-control-md" id="dni" />
                         </div>
-
                         <div class="form-group">
-                            <label for="plazo">Plazo</label>
-                            <input type="number" class="form-control-sm" id="plazo">
-                            <p>Plazos a Ingresar: 30 dias, 60 dias, 90 dias o 120 dias</p>
+                        <label for="plazo">Plazo:</label>
+                        <select id="plazo">
+                            <option value="Todos">Seleccion</option>
+                            <option value="30">30 días</option>
+                            <option value="60">60 días</option>
+                            <option value="90">90 días</option>
+                            <option value="120">120 días</option>
+                        </select>
                         </div>
-                        <!-- <div id="dias">
-                                <button class="btn btn-primary btn-sm" id="btn30" type="button">
-                                    30
-                                </button>
-                                <button class="btn btn-primary btn-sm" id="btn60" type="button">
-                                    60
-                                </button>
-                                <button class="btn btn-primary btn-sm" id="btn90" type="button">
-                                    90
-                                </button>
-                                <button class="btn btn-primary btn-sm" id="btn120" type="button">
-                                    120
-                                </button>
-                            </div> -->
-
-                        <!-- <div id="resultadoplazo" class="my-3"></div> -->
-
                         <div class="form-group">
-                            <label for="monto">monto</label>
+                            <label for="monto">Monto</label>
                             <input type="number" class="form-control-sm" id="monto">
                         </div>
-
-                        <div class="form-group">
-                            <label for="interes">Tasa interes</label>
-                            <input type="number" class="form-control-sm" id="interes">
-                            <p>Tasas a Ingresar: 
-                                <tr> 30 dias = 30%</tr>
-                                <tr> 60 dias = 40%</tr>
-                                <tr> 90 dias = 60%</tr>
-                                <tr> 120 dias = 70%</tr>
-                            </p>
-                        </div>
-
                         <div>
                             <button type="button" id="btnGuardar" class="btn btn-primary btn-sm">
                                 Guardar
@@ -110,7 +84,11 @@
 
     <!-- Resultado Inversion -->
 
-    <div class="alert alert-success" role="alert">
+    <div class="alert alert-dark" role="alert">
+        <p id="detalleFecha"></p>
+        <p id="detalleMonto"></p>
+        <p id="detallePlazo"></p>
+        <p id="detalleTasa"></p>
         <p id="resultadoPlazoFijo"></p>
     </div>
 

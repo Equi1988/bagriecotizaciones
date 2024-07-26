@@ -66,3 +66,7 @@ main h3{
 main p{
     text-align: left;
 }
+
+.form-group {
+    padding: 10px;
+}
