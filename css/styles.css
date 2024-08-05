@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    width: 100%;
 }
 
 header{
@@ -44,9 +45,9 @@ footer svg {
 
 .alert{
 
-    width: 30%;
-    height: 20%;
-    margin-left: 7rem;
+    width: 20rem;
+    /* height: 20%; */
+    margin-left: 1.2rem;
 }
 
 header h1{
@@ -55,7 +56,7 @@ header h1{
 }
 
 main h2{
-    font-size: 2;
+    font-size: 2rem;
     margin-left: 7rem;
 }
 
@@ -75,4 +76,12 @@ main p{
     align-items: center;
     margin-left: 8rem;
     padding: 1rem;
+}
+
+main{
+    width: 80%;
+}
+
+div{
+    width: 20rem;
 }
