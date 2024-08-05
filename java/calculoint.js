@@ -3,10 +3,10 @@ let monto, plazo;
 
 // Relación entre plazos y tasas
 const tasasPorPlazo = {
-    30: 30,
-    60: 40,
-    90: 50,
-    120: 60,
+    30: 35,
+    60: 35,
+    90: 33,
+    120: 33,
 };
 
 // Función para calcular el plazo fijo
@@ -19,6 +19,9 @@ function calcularPlazoFijo(monto, plazo) {
 
     const resultado = (monto * plazo * tasa / 100) / 365;
     const fechaActual = new Date().toLocaleDateString();
+    const fechaVencimiento = new Date();
+    fechaVencimiento.setDate(fechaVencimiento.getDate() + plazo);
+    const fechaVTO = fechaVencimiento.toLocaleDateString();
 
     // Actualización de los elementos en el HTML
     document.getElementById("resultadoPlazoFijo").textContent = `Interés Ganado: $${resultado.toFixed(2)}`;
@@ -26,6 +29,8 @@ function calcularPlazoFijo(monto, plazo) {
     document.getElementById("detalleMonto").textContent = `Monto: $${monto.toFixed(2)}`;
     document.getElementById("detallePlazo").textContent = `Plazo: ${plazo} días`;
     document.getElementById("detalleTasa").textContent = `Tasa: ${tasa}%`;
+    document.getElementById("detalleFechaVTO").textContent = `Fecha VTO: ${fechaVTO}`;
+    
 }
 
 // Asignación de eventos al botón "Cotizar"
