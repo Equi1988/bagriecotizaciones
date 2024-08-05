@@ -2,7 +2,7 @@
 const guardarDatos = () => {
     // guardarInfo();
     vaciarCampos();
-    console.log("Los Datos se han guardado correctamente!");
+    // console.log("Los Datos se han guardado correctamente!");
 }
 
 // const recuperarDatos = () => {
@@ -26,6 +26,7 @@ const borrarDatos = () => {
     const nombreActual = document.getElementById("nombre").value;
     const dniActual = document.getElementById("dni").value;
     const montoActual = document.getElementById("monto").value;
+    const plazoActual = document.getElementById("plazo").value;
     const fechaActual = document.getElementById ("detalleFecha").textContent;
     const detalleMontoActual = document.getElementById ("detalleMonto").textContent;
     const detallePlazo = document.getElementById ("detallePlazo").textContent;
@@ -55,6 +56,7 @@ const borrarDatos = () => {
             document.getElementById("nombre").value = nombreActual;
             document.getElementById("dni").value = dniActual;
             document.getElementById("monto").value = montoActual;
+            document.getElementById ("plazo").value = plazoActual;
             document.getElementById ("detalleFecha").textContent = fechaActual;
             document.getElementById ("detalleMonto").textContent = detalleMontoActual;
             document.getElementById ("detallePlazo").textContent = detallePlazo;
@@ -70,6 +72,7 @@ const vaciarCampos = () => {
     document.getElementById("nombre", "nombreUsuario").value = "";
     document.getElementById("dni", "dniUsuario").value = "";
     document.getElementById ("monto", "montoUsuario").value = "";
+    document.getElementById ("plazo").value = "Seleccion";
     document.getElementById ("detalleFecha").textContent ="";
     document.getElementById ("detalleMonto").textContent ="";
     document.getElementById ("detallePlazo").textContent ="";

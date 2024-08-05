@@ -17,6 +17,8 @@ body{
     background-attachment: fixed;
     color: aliceblue;;
     overflow-x: hidden;
+    margin: 0;
+    padding: 0;
 }
 
 footer {
@@ -75,7 +77,9 @@ main {
 }
 
 .form-container {
-    width: 40rem;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
     display: flex;
     flex-direction: column; /* Alinea los campos verticalmente */
     align-items: center; /* Centra horizontalmente */
@@ -84,8 +88,8 @@ main {
 .alert-container {
     width: 20rem;
     /* display: flex; */
-    /* justify-content: center;
-    align-items: center;
+    justify-content: center;
+    /* align-items: center;
     height: 100vh; */
 }
 
