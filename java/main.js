@@ -27,6 +27,7 @@ const borrarDatos = () => {
     const dniActual = document.getElementById("dni").value;
     const montoActual = document.getElementById("monto").value;
     const plazoActual = document.getElementById("plazo").value;
+    const productoActual = document.getElementById("producto").value;
     const fechaActual = document.getElementById ("detalleFecha").textContent;
     const detalleMontoActual = document.getElementById ("detalleMonto").textContent;
     const detallePlazo = document.getElementById ("detallePlazo").textContent;
@@ -57,6 +58,7 @@ const borrarDatos = () => {
             document.getElementById("dni").value = dniActual;
             document.getElementById("monto").value = montoActual;
             document.getElementById ("plazo").value = plazoActual;
+            document.getElementById ("producto").value = productoActual;
             document.getElementById ("detalleFecha").textContent = fechaActual;
             document.getElementById ("detalleMonto").textContent = detalleMontoActual;
             document.getElementById ("detallePlazo").textContent = detallePlazo;
@@ -73,6 +75,7 @@ const vaciarCampos = () => {
     document.getElementById("dni", "dniUsuario").value = "";
     document.getElementById ("monto", "montoUsuario").value = "";
     document.getElementById ("plazo").value = "Seleccion";
+    document.getElementById ("producto").value = "Todos";
     document.getElementById ("detalleFecha").textContent ="";
     document.getElementById ("detalleMonto").textContent ="";
     document.getElementById ("detallePlazo").textContent ="";
@@ -103,35 +106,41 @@ document.getElementById("btnBorrar").onclick = borrarDatos;
 // // Llama a la función con el tipo de cliente apropiado (1 o 2)
 // mostrarResultado();
 
-    const clienteRadio = document.getElementById('cliente');
-    const noClienteRadio = document.getElementById('nocliente');
-    const productoSelect = document.getElementById('producto');
-    const resultadoDiv = document.getElementById('resultado');
-    const resultadoNoClienteDiv = document.getElementById('resultadoNoCliente');
+    const clienteRadio = document.getElementById("cliente");
+    const noClienteRadio = document.getElementById("nocliente");
+    const productoSelect = document.getElementById("producto");
+    const resultadoDiv = document.getElementById("resultado");
+    const resultadoNoClienteDiv = document.getElementById("resultadoNoCliente");
 
-    // Función para actualizar el resultado según el producto seleccionado
-    function actualizarResultado() {
-        const productoElegido = productoSelect.value;
-        resultadoDiv.innerHTML = `Producto seleccionado: ${productoElegido}`;
-        console.log(productoElegido);
-    
-
-    clienteRadio.addEventListener('change', () => {
-        if (clienteRadio.checked) {
-            productoSelect.style.display = 'block';
-            actualizarResultado();
-            resultadoNoClienteDiv.innerHTML = ''; // Limpia el resultado de "No Cliente"
-        }
-    });
-
-    noClienteRadio.addEventListener('change', () => {
-        if (noClienteRadio.checked) {
-            productoSelect.style.display = 'none';
-            resultadoNoClienteDiv.innerHTML = '¡Gracias por considerarnos!';
-            resultadoDiv.innerHTML = ''; // Limpia el resultado de "Cliente"
-        }
-    });
-
+// Función para actualizar el resultado según el producto seleccionado
+function actualizarResultado() {
+    const productoElegido = productoSelect.value;
+    resultadoDiv.innerHTML = "Producto seleccionado: " + productoElegido;
+    console.log(productoElegido);
 }
-    // Actualiza el resultado inicialmente (por si el usuario ya seleccionó un producto)
+
+// Configura los eventos para los radio buttons y el select
+clienteRadio.addEventListener("change", () => {
+    if (clienteRadio.checked) {
+        productoSelect.style.display = "block";
+        actualizarResultado();
+        resultadoNoClienteDiv.innerHTML = ""; // Limpia el resultado de "No Cliente"
+    }
+});
+
+noClienteRadio.addEventListener("change", () => {
+    if (noClienteRadio.checked) {
+        productoSelect.style.display = "none";
+        resultadoNoClienteDiv.innerHTML = "¡Gracias por considerarnos!";
+        resultadoDiv.innerHTML = ""; // Limpia el resultado de "Cliente"
+    }
+});
+
+productoSelect.addEventListener("change", () => {
     actualizarResultado();
+});
+
+// Actualiza el resultado inicialmente (por si el usuario ya seleccionó un producto)
+actualizarResultado();
+
+
