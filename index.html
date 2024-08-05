@@ -16,9 +16,9 @@
         <h1>BAGRIE COTIZACIONES</h1>
     </header>
     <main>
-        <h2>Cotizador</h2>
-        <form>
-            <div class="container my-4">
+        <form class="form-container">
+            <h2>Cotizador</h2>
+            <div class="container">
                 <div id="contenido" class="row">
                     <div class="col">
                         <h3>¿Sos Cliente?</h3>
@@ -34,12 +34,12 @@
                                 <option value="Advanced">Advanced</option>
                                 <option value="Standard">Standard</option>
                             </select>
-                            <div id="resultado" class="my-3"></div>
+                            <div id="resultado"></div>
                             <div class="form-group">
                                 <input class="form-check-input" name="radioUno" type="radio" value="2" id="nocliente" />
                                 <label class="form-check-label" for="flexCheckChecked">No soy Cliente</label>
                             </div>
-                            <div id="resultadoNoCliente" class="my-3"></div>
+                            <div id="resultadoNoCliente"></div>
                         </div>
                         <div class="form-group">
                             <label for="nombre" class="form-label">Nombre y Apellido</label>
@@ -59,41 +59,46 @@
                             <option value="120">120 días</option>
                         </select>
                         </div>
-
                         <div class="form-group">
-                            <label for="monto">monto</label>
+                            <label for="monto">Monto</label>
                             <input type="number" class="form-control-sm" id="monto">
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="btnejecucion">
+                <!-- <button type="button" id="btnGuardar" class="btn btn-primary btn-sm">
+                    Guardar
+                </button> -->
+                <!-- <button type="button" id="btnRecuperar" class="btn btn-success btn-sm">
+                    Recuperar
+                </button> -->
+                <div>
+                <button id="btnCotizar" class="btn btn-light btn-sm">
+                    Cotizar
+                </button>
+                </div>
+                <div>
+                <button type="button" id="btnBorrar" class="btn btn-danger btn-sm">
+                    Borrar
+                </button>
+            </div>
+            </div>
         </form>
     </main>
 
     <!-- Resultado Inversion -->
-
-    <div class="alert alert-dark" role="alert" id="cotizador">
-        <p id="detalleFecha"></p>
-        <p id="detalleMonto"></p>
-        <p id="detallePlazo"></p>
-        <p id="detalleTasa"></p>
-        <p id="resultadoPlazoFijo"></p>
-        <p id="detalleFechaVTO"></p>
-    </div>
-
-    <div class="btnejecucion">
-        <!-- <button type="button" id="btnGuardar" class="btn btn-primary btn-sm">
-            Guardar
-        </button> -->
-        <!-- <button type="button" id="btnRecuperar" class="btn btn-success btn-sm">
-            Recuperar
-        </button> -->
-        <button type="button" id="btnBorrar" class="btn btn-danger btn-sm">
-            Borrar
-        </button>
-        <button id="btnCotizar" class="btn btn-light btn-sm">
-            Cotizar
-        </button>
+     <section>
+    <div class="alert-container">
+        <div class="alert alert-dark" role="alert" id="cotizador">
+            <p id="detalleFecha"></p>
+            <p id="detalleMonto"></p>
+            <p id="detallePlazo"></p>
+            <p id="detalleTasa"></p>
+            <p id="resultadoPlazoFijo"></p>
+            <p id="detalleFechaVTO"></p>
+        </div>
+    </section>
     </div>
 
     <section>

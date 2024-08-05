@@ -43,13 +43,6 @@ footer svg {
     color: #eef1f0;
 }
 
-.alert{
-
-    width: 20rem;
-    /* height: 20%; */
-    margin-left: 1.2rem;
-}
-
 header h1{
     font-size: 3rem;
     text-align: center;
@@ -68,20 +61,40 @@ main p{
     text-align: left;
 }
 
-.form-group {
+/* .form-group {
     padding: 10px;
-}
+} */
 
-.btnejecucion{
+
+main {
+    display: flex;
+    width: 100%;
+    justify-content: center;
     align-items: center;
-    margin-left: 8rem;
-    padding: 1rem;
+    height: 100vh;
 }
 
-main{
-    width: 80%;
+.form-container {
+    width: 40rem;
+    display: flex;
+    flex-direction: column; /* Alinea los campos verticalmente */
+    align-items: center; /* Centra horizontalmente */
 }
 
-div{
+.alert-container {
     width: 20rem;
+    /* display: flex; */
+    /* justify-content: center;
+    align-items: center;
+    height: 100vh; */
 }
+
+
+.btnejecucion {
+    padding: 1rem;
+    width: 20rem;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+}
+

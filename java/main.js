@@ -36,7 +36,6 @@ const borrarDatos = () => {
 
     // Vaciar los campos
     vaciarCampos();
-
     Swal.fire({
         title: "¿Estás seguro?",
         text: "No podrás recuperar los datos.",
