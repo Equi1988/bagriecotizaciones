@@ -7,7 +7,25 @@
 
 header{
     background-color: black;
+    text-align: center;
+    padding: 1rem 0;
 }
+
+.navbar-nav {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+
+}
+
+.navbar-nav .nav-link{
+    color: white;
+}
+
+.nav-item {
+    margin: 0 10rem; /* Elimina el margen por defecto */
+}
+
 
 body{
     background-image: url(../asset/stock-1863880_1920.jpg);
