@@ -13,21 +13,17 @@ header{
 
 .navbar-nav {
     background-color: black;
+    color: white;
     display: flex;
     justify-content: center;
 
 }
 
 .navbar-nav .nav-link{
+    background-color: black;
     color: white;
     font-size: 1.5rem;
 }
-
-.nav-item {
-    margin: 0 10rem; /* Elimina el margen por defecto */
-}
-
-
 
 body{
     background-image: url(../asset/stock-1863880_1920.jpg);
