@@ -26,13 +26,13 @@ document.addEventListener('DOMContentLoaded', () =>{
 
 
     function guardarCita(agendaCita){
-        let citas = JSON.parse(localStorage.getItem('citas')) || [];
+        let citas = JSON.parse(localStorage.getItem("citas")) || [];
         citas.push(agendaCita);
         localStorage.setItem('citas', JSON.stringify(citas));
     }
 
     function cargarCita() {
-        const citas = JSON.parse(localStorage.getItem('citas')) || [];
+        const citas = JSON.parse(localStorage.getItem("citas")) || [];
         const emailUsuarioActual = 'correo@example.com'; // ¡Reemplaza esto con el correo del usuario actual!
     
         const citaUsuarioActual = citas.find(agendaCita => agendaCita.email === emailUsuarioActual);
@@ -51,13 +51,13 @@ document.addEventListener('DOMContentLoaded', () =>{
     
         // Llama a SweetAlert para mostrar los detalles de la cita
         Swal.fire({
-            title: 'Detalles de la Cita',
+            title: "Detalles de la Cita",
             text: mensaje,
-            icon: 'sucess',
-            confirmButtonText: 'Entendido'
+            icon: "info",
+            confirmButtonText: "Entendido"
         });
         // También puedes seguir agregando la cita a la lista si lo deseas
-        const li = document.createElement('li');
+        const li = document.createElement("li");
         li.textContent = mensaje;
         citaList.appendChild(li);
     }    

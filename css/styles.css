@@ -129,11 +129,20 @@ main {
 }
 
 #formulario_cita {
-    background-color: #636161;
+    background-color: black;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
+    margin-bottom: 20px;
     max-width: 500px;
     width: 100%;
     margin: 20px auto;
 }
+
+input[type="text"],
+input[type="date"],
+input[type="time"],
+input[type="email"] {
+    margin-bottom: 10px; /* Espacio entre los campos de entrada */
+}
+
