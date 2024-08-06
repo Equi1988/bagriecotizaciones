@@ -1,0 +1,7 @@
+[
+    {"id":1, "nombre":"Dolar Oficial", "precio compra":914, "precio venta":954},
+    {"id":2, "nombre":"Dolar Bolsa", "precio compra":914, "precio venta":954},
+    {"id":3, "nombre":"Contado con Liqui", "precio compra":914, "precio venta":954},
+    {"id":4, "nombre":"Dolar Cripto", "precio compra":914, "precio venta":954},
+    {"id":4, "nombre":"Dolar Tarjeta", "precio compra":914, "precio venta":954}
+]

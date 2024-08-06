@@ -143,4 +143,25 @@ productoSelect.addEventListener("change", () => {
 // Actualiza el resultado inicialmente (por si el usuario ya seleccionó un producto)
 actualizarResultado();
 
+// Función Flecha Asíncrona
+const renderProductos = async () => {
+    const response = await fetch("json/productos.json");
+    const data = await response.json();
+    let contenidoHTML = "";
 
+    data.forEach(element => {
+        contenidoHTML += `<div class="col-md-3">
+        <div class="card border-0 mb-3">
+        <img src="../after3/images/${element.imagen}" class="card-img-top" alt="${element.nombre}">
+        <div class="card-body">
+            <h6 class="card-title">${element.nombre}</h6>
+            <p class="card-text">$${element.precio}<br><span class="text-secondary">${element.categoria}</span></p>
+        </div>
+        </div>
+        </div>`;
+    });
+
+    document.getElementById("contenido").innerHTML = contenidoHTML;
+}
+
+renderProductos();
