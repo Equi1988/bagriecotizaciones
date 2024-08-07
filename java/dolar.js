@@ -1,4 +1,4 @@
-fetch("http://127.0.0.1:5500/json/valores.json")
+fetch(".json/valores.json")
 .then(response => response.json())
 .then(data => {
     let contenidoHTML = `
@@ -12,7 +12,7 @@ fetch("http://127.0.0.1:5500/json/valores.json")
       </thead>
       <tbody>`;
 
-    data.forEach((element, index) => {
+    data.forEach((element) => {
         contenidoHTML += `
         <tr>
 
