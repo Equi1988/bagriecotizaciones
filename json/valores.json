@@ -1,7 +1,8 @@
 [
-    {"id":1, "nombre":"Dolar Oficial", "precio compra":914, "precio venta":954},
-    {"id":2, "nombre":"Dolar Bolsa", "precio compra":914, "precio venta":954},
-    {"id":3, "nombre":"Contado con Liqui", "precio compra":914, "precio venta":954},
-    {"id":4, "nombre":"Dolar Cripto", "precio compra":914, "precio venta":954},
-    {"id":4, "nombre":"Dolar Tarjeta", "precio compra":914, "precio venta":954}
+    {"id":1, "Moneda":"Dolar Oficial", "PrecioCompra":914, "PrecioVenta":954},
+    {"id":2, "Moneda":"Dolar Bolsa", "PrecioCompra":1332, "PrecioVenta":1338},
+    {"id":3, "Moneda":"Contado con Liqui", "PrecioCompra":1328, "PrecioVenta":1345},
+    {"id":4, "Moneda":"Dolar Cripto", "PrecioCompra":1349, "PrecioVenta":1354},
+    {"id":5, "Moneda":"Dolar Tarjeta", "PrecioCompra":"$ 0", "PrecioVenta":1527}
 ]
+

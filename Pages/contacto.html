@@ -18,28 +18,29 @@
         <h1>BAGRIE COTIZACIONES</h1>
         <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
             <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="../index.html">Cotizador</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./Pages/dolar.html">Dolar</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./contacto.html">Contacto</a>
-                </li>
-                </ul>
-            </div>
+                <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse d-lg-flex" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="../index.html">Cotizador</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./dolar.html">Dolar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./contacto.html">Contacto</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
-    </header>   
+    </header>
+
     <main>
         
-        <form id="formulario_cita">
+        <form id="formulario_agenda">
         <h1 class="h1_cita">Agendar Cita</h1>
         <label for="name">Nombre:</label>
         <input type="text" id="name" required="">
@@ -51,13 +52,33 @@
         <input type="date" id="date" required="">
         
         <label for="time">Hora:</label>
-        <input type="time" id="time" required="">
-        
+        <select id="time" name="time" required>
+            <option value="09:00">09:00</option>
+            <option value="10:00">10:00</option>
+            <option value="11:00">11:00</option>
+            <option value="12:00">12:00</option>
+            <option value="13:00">13:00</option>
+            <option value="14:00">14:00</option>
+            <option value="15:00">15:00</option>
+            <option value="16:00">16:00</option>
+            <option value="17:00">17:00</option>
+        </select>
+
+        <label for="text">Tipo de Operacion:</label>
+        <select id="text" name="text" required>
+            <option value="plazo Fijo">Plazo Fijo</option>
+            <option value="compraventadivisas">Compra/Venta Divisas</option>
+        </select>
+
         <label for="email">Correo Electrónico:</label>
         <input type="email" id="email" required="">
-        
+
         <button type="submit" class="btn btn-info">Agendar</button>
         <a href="../index.html"><button type="button" class="btn btn-light">Regresar</button></a>
+        <br>
+        <div class="alert alert-success" role="alert" >
+            <p id="listadoCitas"></p>
+        </div>
     </form>
 </main>
 
