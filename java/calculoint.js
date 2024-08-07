@@ -30,22 +30,23 @@ function calcularPlazoFijo(monto, plazo) {
     document.getElementById("detallePlazo").textContent = `Plazo: ${plazo} días`;
     document.getElementById("detalleTasa").textContent = `Tasa: ${tasa}%`;
     document.getElementById("detalleFechaVTO").textContent = `Fecha VTO: ${fechaVTO}`;
+    
 }
 
 // Asignación de eventos al botón "Cotizar"
-const btnCotizar = document.getElementById('btnCotizar');
+const btnCotizar = document.getElementById("btnCotizar");
 
-btnCotizar.addEventListener('click', (event) => {
+btnCotizar.addEventListener("click", (event) => {
     event.preventDefault();
-    monto = parseFloat(document.getElementById('monto').value);
-    plazo = parseInt(document.getElementById('plazo').value);
+    monto = parseFloat(document.getElementById("monto").value);
+    plazo = parseInt(document.getElementById("plazo").value);
 
     // Validación de campos
     if (isNaN(monto) || isNaN(plazo)) {
         Swal.fire({
-            icon: 'error',
-            title: 'Campos incompletos',
-            text: 'Por favor, completa todos los campos.',
+            icon: "error",
+            title: "Campos incompletos",
+            text: "Por favor, completa todos los campos.",
         });
         return;
     }

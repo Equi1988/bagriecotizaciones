@@ -5,7 +5,7 @@ fetch("http://127.0.0.1:5500/json/valores.json")
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Moneda</th>
+        <th scope="col">Moneda</th>
           <th scope="col">Precio Compra</th>
           <th scope="col">Precio Venta</th>
         </tr>

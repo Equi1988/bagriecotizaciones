@@ -1,17 +1,27 @@
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("formulario_agenda");
-    const citaList = document.getElementById("listadoCitas");
 
     cargarCita();
 
     form.addEventListener("submit", (event) => {
         event.preventDefault();
-        const name = document.getElementById("name").value;
-        const apellido = document.getElementById("apellido").value;
-        const date = document.getElementById("date").value;
-        const time = document.getElementById("time").value;
-        const email = document.getElementById("email").value;
-        const text = document.getElementById ("text").value;
+        const name = document.getElementById("name").value.trim();
+        const apellido = document.getElementById("apellido").value.trim();
+        const date = document.getElementById("date").value.trim();
+        const time = document.getElementById("time").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const text = document.getElementById("text").value.trim();
+
+        // Validar que todos los campos estén completos
+        if (!name || !apellido || !date || !time || !email || !text) {
+            Swal.fire({
+                title: "Campos incompletos",
+                text: "Por favor, completa todos los campos antes de continuar.",
+                icon: "error",
+                confirmButtonText: "Entendido"
+            });
+            return;
+        }
 
         // Validar que la fecha no sea anterior a la fecha actual
         const fechaActual = new Date().toISOString().split("T")[0];
@@ -45,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function cargarCita() {
         const citas = JSON.parse(localStorage.getItem("citas")) || [];
-        const emailUsuarioActual = 'correo@example.com'; // ¡Reemplaza esto con el correo del usuario actual!
+        const emailUsuarioActual = 'correo@example.com';
 
         const citaUsuarioActual = citas.find(agendaCita => agendaCita.email === emailUsuarioActual);
         if (citaUsuarioActual) {
@@ -70,10 +80,5 @@ document.addEventListener("DOMContentLoaded", () => {
             icon: "success",
             confirmButtonText: "Entendido"
         });
-        // También puedes seguir agregando la cita a la lista si lo deseas
-        const li = document.createElement("li");
-        li.textContent = mensaje;
-        citaList.appendChild(li);
     }
 });
-

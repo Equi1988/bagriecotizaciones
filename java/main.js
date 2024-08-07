@@ -41,7 +41,7 @@ const borrarDatos = () => {
     Swal.fire({
         title: "¿Estás seguro?",
         text: "No podrás recuperar los datos.",
-        icon: "warning",
+        icon: "error",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
