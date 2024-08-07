@@ -1,4 +1,4 @@
-fetch(".json/valores.json")
+fetch("../json/valores.json")
 .then(response => response.json())
 .then(data => {
     let contenidoHTML = `
