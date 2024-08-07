@@ -182,3 +182,15 @@ button [type ="button"] {
 .table tbody tr:hover {
     background-color: #f1f1f1;
 }
+
+
+.col-moneda {
+            width: 20%;
+        }
+.col-precio-compra, .col-precio-venta {
+            width: 30%;
+        }
+table {
+            width: 100%;
+        }
+

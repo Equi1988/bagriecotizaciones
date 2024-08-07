@@ -2,12 +2,12 @@ fetch("../json/valores.json")
 .then(response => response.json())
 .then(data => {
     let contenidoHTML = `
-    <table class="table">
+    <table class="table table-dark table-striped">
       <thead>
         <tr>
-          <th scope="col">Moneda</th>
-          <th scope="col">Precio Compra</th>
-          <th scope="col">Precio Venta</th>
+          <th scope="col" class="col-moneda">Moneda</th>
+          <th scope="col" class="col-precio-compra">Precio Compra</th>
+          <th scope="col" class="col-precio-venta">Precio Venta</th>
         </tr>
       </thead>
       <tbody>`;
@@ -15,10 +15,9 @@ fetch("../json/valores.json")
     data.forEach((element) => {
         contenidoHTML += `
         <tr>
-
-          <td>${element.Moneda}</td>
-          <td>${element.PrecioCompra}</td>
-          <td>${element.PrecioVenta}</td>
+          <td class="col-moneda">${element.Moneda}</td>
+          <td class="col-precio-compra">${element.PrecioCompra}</td>
+          <td class="col-precio-venta">${element.PrecioVenta}</td>
         </tr>`;
     });
 
