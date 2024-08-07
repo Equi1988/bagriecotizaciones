@@ -1,4 +1,4 @@
-fetch("http://127.0.0.1:5500/json/valores.json")
+fetch("http://192.168.1.100:5500/json/valores.json")
 .then(response => response.json())
 .then(data => {
     let contenidoHTML = `
